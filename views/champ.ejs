@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>
+    <%= champ.nom %>
+  </title>
+</head>
+
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">OP<br>WR</a>
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Tier list</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div id="header" class="container">
+    <div id="firstsection">
+      <div class="info">
+        <img id="profile" src="<%= champ.img %>" alt="">
+        <div id="desc">
+          <span id="title">
+            <%= champ.nom %>
+          </span> <br>
+          <%= champ.descri %><br>
+            <%= champ.role %>
+        </div>
+      </div>
+      <div id="recitems">
+        Recommended Items: <br>
+        <% let i = 0 %>
+        <% items.forEach( item=> { %>
+          <button type="button" class="btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-trigger="focus"
+            data-bs-placement="bottom" title="" data-bs-content="<%= item.descrit%>"
+            data-bs-original-title="<%= item.nomit%>"><img class="itemimg" src="<%= item.imgit%>" alt="">
+          </button>
+          <% if (i<5){ %>
+          <img class="arrow" src="img/arrow.png" alt="arrow symbol">
+          <% }; i++ %>
+          <% }) %>
+            <br>
+            Active Item:
+            <button type="button" class="btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-trigger="focus"
+              data-bs-placement="bottom" title="<%= itac.nomit %>" data-bs-content="<%= itac.descrit %>"><img
+                class="itemimg" src="<%= itac.imgit %>" alt=""> </button>
+            <br>
+            Summoner spells:
+            <% spells.forEach(spell=> { %>
+              <button type="button" class="btn btn-lg btn-primary" data-bs-toggle="popover" data-bs-trigger="focus"
+                data-bs-placement="bottom" title="<%= spell.nomsp %>" data-bs-content="<%= spell.desp %>"><img
+                  class="itemimg" src="<%= spell.imgsp %>" alt=""> </button>
+              <% }) %>
+      </div>
+    </div>
+    <hr id="vl">
+    <hr id="nl">
+    <div id="secondsection">
+      <div id="abilities">
+        <% abilites.forEach(abilite=>{ %>
+          <button class="abbutton" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom"
+            title="<%= abilite.nom %>" data-bs-content="<%= abilite.descr %>"> <img src="<%= abilite.img %>"
+              alt=""></button>
+          <% }) %>
+      </div>
+      <div id="order">Abilities upgrade order: <br> <span id="num">
+          <%= champ.upor %>
+        </span></div>
+      <div id="runes">Runes
+        <% runes.forEach(rune=> { %>
+          <img data-bs-toggle="tooltip" data-bs-placement="right" title="<%= rune.nomrn %>" src="<%= rune.imgrn %>"
+            alt="">
+          <% }) %>
+      </div>
+    </div>
+  </div>
+  <footer>Coded BY M.AZAZA & S.Benali - 2021&copy;| <span> privacy policy</span> </footer>
+
+
+
+
+  <!--scripts-->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
